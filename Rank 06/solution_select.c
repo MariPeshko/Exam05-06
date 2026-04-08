@@ -20,7 +20,7 @@ fd_set		write_set, read_set, current;
 int			max_fd = 0, gid = 0;
 char		send_buf[210000], recv_buf[210000];
 
-void err(char *msg) {
+void	err(char *msg) {
 	if (msg) write(2, msg, strlen(msg));
 	else write(2, "Fatal error", 11);
 	write(2, "\n", 1);
@@ -40,7 +40,7 @@ int main(int ac, char **av) {
 	struct	sockaddr_in addr;
 	int		sockfd = socket(AF_INET, SOCK_STREAM, 0);
 	if (sockfd < 0) err(NULL);
-	
+
 	max_fd = sockfd;
 	FD_ZERO(&current);
 	FD_SET(sockfd, &current);

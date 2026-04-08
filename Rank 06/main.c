@@ -61,12 +61,12 @@ int main() {
 	if (sockfd == -1) { 
 		printf("socket creation failed...\n"); 
 		exit(0); 
-	} 
+	}
 	else
 		printf("Socket successfully created..\n"); 
 	bzero(&servaddr, sizeof(servaddr));
 
-    // assign IP, PORT 
+	// assign IP, PORT 
     servaddr.sin_family = AF_INET; 
 	servaddr.sin_addr.s_addr = htonl(2130706433); //127.0.0.1
 	servaddr.sin_port = htons(8081); 
