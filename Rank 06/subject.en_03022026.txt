@@ -2,7 +2,7 @@ Assignment name  : mini_serv     03/02/2026
 Expected files   : mini_serv.c
 Allowed functions: write, close, select, poll, socket, accept, 
 listen, send, recv, bind, strstr, malloc, realloc, free, calloc, 
-bzero, atoi, sprintf, strlen, exit, strcpy, strcat, memset, 
+bzero, memset, atoi, sprintf, strlen, exit, strcpy, strcat, 
 htons, htonl
 --------------------------------------------------------------------------------
 
@@ -14,7 +14,7 @@ If no argument is provided, it should write to stderr
 "Wrong number of arguments" followed by a \n and exit with status 1.
 
 If a system call returns an error before the program starts 
-accepting connections, it should write to stderr (check it again)"Fatal error" 
+accepting connections, it should write to stderr (check it again) "Fatal error" 
 followed by a \n and exit with status 1.
 
 If memory allocation fails, it should write to stderr "Fatal error" 
@@ -29,9 +29,6 @@ Your program must listen only on the local IP address 127.0.0.1.
 The fd you receive using 'accept' will already be configured so 
 that 'recv' or 'send' blocks if 'select' or 'poll' hasn't 
 been called before calling them, but will not block otherwise.
-
-Le fd que vous recevrez sera deja configure pour que 'recv' or 'send' bloque
-si select n'a pas ete appele avant de les appeler, mais ne bloquera pas sinon.
 
 [Note: The behavior is conditional:
     - blocks if select was not called beforehand

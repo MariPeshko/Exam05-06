@@ -53,8 +53,8 @@ char *str_join(char *buf, char *add)
 }
 
 int main() {
-	int sockfd, connfd, len;
-	struct sockaddr_in servaddr, cli; 
+	int		sockfd, connfd, len;
+	struct	sockaddr_in servaddr; 
 
 	// socket create and verification 
 	sockfd = socket(AF_INET, SOCK_STREAM, 0); 
@@ -63,13 +63,13 @@ int main() {
 		exit(0); 
 	}
 	else
-		printf("Socket successfully created..\n"); 
-	bzero(&servaddr, sizeof(servaddr));
+		printf("Socket successfully created..\n");
 
+	bzero(&servaddr, sizeof(servaddr));
 	// assign IP, PORT 
     servaddr.sin_family = AF_INET; 
-	servaddr.sin_addr.s_addr = htonl(2130706433); //127.0.0.1
 	servaddr.sin_port = htons(8081); 
+	servaddr.sin_addr.s_addr = htonl(2130706433); //127.0.0.1
 
     // Binding newly created socket to given IP and verification 
 	if ((bind(sockfd, (const struct sockaddr *)&servaddr, sizeof(servaddr))) != 0) { 
@@ -78,10 +78,14 @@ int main() {
 	} 
 	else
 		printf("Socket successfully bound.\n");
+
 	if (listen(sockfd, 10) != 0) {
 		printf("cannot listen\n"); 
 		exit(0); 
 	}
+
+	struct sockaddr_in	cli;
+
     len = sizeof(cli);
 	connfd = accept(sockfd, (struct sockaddr *)&cli, &len);
 	if (connfd < 0) { 
