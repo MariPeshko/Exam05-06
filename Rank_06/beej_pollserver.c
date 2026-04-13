@@ -201,7 +201,8 @@ void handle_client_data(int sockfd, int *fd_count,
 /*
  * Process all existing connections.
  */
-void process_connections(int sockfd, int *fd_count, int *fd_size,
+void process_connections(
+	int sockfd, int *fd_count, int *fd_size,
 		struct pollfd **pfds)
 {
 	for(int i = 0; i < *fd_count; i++) {
