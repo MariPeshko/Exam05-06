@@ -1,9 +1,8 @@
 Assignment name  : mini_serv     03/02/2026
 Expected files   : mini_serv.c
-Allowed functions: write, close, select, poll, socket, accept, 
-listen, send, recv, bind, strstr, malloc, realloc, free, calloc, 
-bzero, memset, atoi, sprintf, strlen, exit, strcpy, strcat, 
-htons, htonl
+Allowed functions: write, sprintf, close, select, poll, socket, accept, 
+listen, send, recv, bind, strcpy, strstr, strcat, malloc, realloc, free, 
+calloc, bzero, memset, atoi, strlen, exit, htons, htonl
 --------------------------------------------------------------------------------
 
 Write a program that listens for clients to connect on a specific 
