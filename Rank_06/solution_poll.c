@@ -150,11 +150,12 @@ int	handle_client_data(int pfd_i) {
 		// 2. Обробляємо всі повні повідомлення в буфері
         char *msg = NULL;
 		while (extract_message(&client_bufs[pfd_i], &msg)) {
-            // 3. Формуємо фінальне повідомлення з префіксом
-            char broadcast_buf[4200]; // Розмір має бути достатнім
-            sprintf(broadcast_buf, "client %d: %s", client_ids[sender_fd], msg);
-			// 4. Розсилаємо його всім іншим
+            char broadcast_buf[4200];
+            sprintf(broadcast_buf, "client %d: ", client_ids[sender_fd]);
+			// 3. Розсилаємо префікс
         	broadcast_msg(sender_fd, broadcast_buf);
+			// 4. Розсилаємо повідомлення
+        	broadcast_msg(sender_fd, msg);
 			// 5. Звільняємо пам'ять, виділену extract_message
             free(msg);
 		}
