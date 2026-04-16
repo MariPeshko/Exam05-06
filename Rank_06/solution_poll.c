@@ -169,7 +169,7 @@ void	handle_new_conn() {
 	socklen_t			len = sizeof(cli);
 	int					connfd;
 	connfd = accept(sockfd, (struct sockaddr *)&cli, &len);
-	if (connfd == -1) err("Fatal error"); // TO DO: ? return; Не фатальна помилка, просто ігноруємо
+	if (connfd < 0) return; // Не фатальна помилка, просто ігноруємо
 	
 	add_client(connfd);
 	client_ids[connfd] = next_id;
@@ -197,8 +197,10 @@ int	main(int argc, char **argv) {
 			if (pfds[i].revents & POLLIN) {
 				if (pfds[i].fd == sockfd) 
 					handle_new_conn();
-				else
-					handle_client_data(i);
+				else {
+					if (handle_client_data(i) == 1)
+						i--;
+				}
 			}
 		}
 	}
