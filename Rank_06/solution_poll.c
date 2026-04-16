@@ -135,8 +135,8 @@ int	handle_client_data(int pfd_i) {
 	char recv_buf[1024]; // Буфер для одного виклику recv
 	int sender_fd = pfds[pfd_i].fd;
 
-	int nbytes = recv(sender_fd, recv_buf, sizeof(recv_buf), 0);
-	if (nbytes <= 0) { // Клієнт від'єднався або сталася помилка
+	int nbytes = recv(sender_fd, recv_buf, sizeof(recv_buf) - 1, 0);
+	if (nbytes <= 0) {
 		char msg_buf[100];
         sprintf(msg_buf, "server: client %d just left\n", client_ids[sender_fd]);
 		remove_client(pfd_i);
