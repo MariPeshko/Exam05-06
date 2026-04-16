@@ -91,7 +91,7 @@ int	get_listener_socket(int port)
 		err("Fatal error");
 	else
 		printf("Socket successfully bound.\n");
-	if (listen(sockfd, 10) != 0) err("Fatal error");
+	if (listen(sockfd, 128) != 0) err("Fatal error");
 	return sockfd;
 }
 
